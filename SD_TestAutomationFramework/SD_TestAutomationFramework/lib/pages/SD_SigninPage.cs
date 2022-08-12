@@ -22,7 +22,8 @@ namespace SD_TestAutomationFramework.lib.pages
         //constructor
         public SD_SigninPage(IWebDriver seleniumDriver) => _seleniumDriver = seleniumDriver;
 
-        #region methods
+        #region 
+        public void VisitSignInPage() => _seleniumDriver.Navigate().GoToUrl(_signInUrl);
         public void InputUserName(string username) => _usernameLoginField.SendKeys(username);
         public void InputPassword(string password) => _passwordLoginField.SendKeys(password);
         public void clickSignIn() => _submitBtn.Click();
