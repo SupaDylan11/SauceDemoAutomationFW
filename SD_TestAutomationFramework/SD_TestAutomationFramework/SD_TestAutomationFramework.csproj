@@ -24,14 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BDD\Features\" />
-    <Folder Include="BDD\Steps\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Testhost.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BDD\features\" />
   </ItemGroup>
 
 </Project>
