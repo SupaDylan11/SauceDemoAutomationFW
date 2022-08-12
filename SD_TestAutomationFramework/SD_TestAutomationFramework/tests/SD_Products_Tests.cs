@@ -54,40 +54,40 @@ namespace SD_TestAutomationFramework.tests
         }
 
         [Test]
-        public void GivenIAmOnTheBasketsPage_WhenICLickTheAddToCartButton_TheItemShouldBeAdded()
+        public void GivenIAmOnTheProductsPage_WhenICLickTheAddToCartButton_TheItemShouldBeAdded()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
             SD_Website.SD_SignInPage.InputUserName("standard_user");
             SD_Website.SD_SignInPage.InputPassword("secret_sauce");
             SD_Website.SD_SignInPage.clickSignIn();
 
-            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_BasketPage.CartItems;
+            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_ProductsPage.CartItems;
             int countB4 = cartItemsB4.Count;
 
-            SD_Website.SD_BasketPage.AddToBasket.Click();
+            SD_Website.SD_ProductsPage.AddToBasket.Click();
 
-            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_BasketPage.CartItems;
+            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_ProductsPage.CartItems;
             int countAfter = cartItemsAfter.Count;
 
             Assert.That(countB4 < countAfter, Is.True);
         }
 
         [Test]
-        public void GivenIAmOnTheBasketsPage_WhenICLickTheRemoveButton_TheItemShouldBeRemovedFromCart()
+        public void GivenIAmOnTheProductsPage_WhenICLickTheRemoveButton_TheItemShouldBeRemovedFromCart()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
             SD_Website.SD_SignInPage.InputUserName("standard_user");
             SD_Website.SD_SignInPage.InputPassword("secret_sauce");
             SD_Website.SD_SignInPage.clickSignIn();
 
-            SD_Website.SD_BasketPage.AddToBasket.Click();
+            SD_Website.SD_ProductsPage.AddToBasket.Click();
 
-            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_BasketPage.CartItems;
+            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_ProductsPage.CartItems;
             int countB4 = cartItemsB4.Count;
 
-            SD_Website.SD_BasketPage.RemoveFromBasket.Click();
+            SD_Website.SD_ProductsPage.RemoveFromBasket.Click();
 
-            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_BasketPage.CartItems;
+            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_ProductsPage.CartItems;
             int countAfter = cartItemsAfter.Count;
 
             Assert.That(countB4 > countAfter, Is.True);
