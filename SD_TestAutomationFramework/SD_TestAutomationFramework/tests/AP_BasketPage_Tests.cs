@@ -1,4 +1,4 @@
-﻿using AP_TestAutomationFramework.lib;
+﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using SD_TestAutomationFramework;
@@ -10,13 +10,19 @@ namespace AP_TestAutomationFramework.tests
     {
         private SD_Website<FirefoxDriver> SD_Website = new();
 
+        [Ignore("Not done yet")]
         [Test]
         public void GivenIAmOnTheBasketPage_WhenIClickTheAddToCartButton_ThenTheItemShouldBeAdded()
         {
-            SD_Website.SD_SignInPage.VisitSignInPage();
+/*            SD_Website.SD_SignInPage.VisitSignInPage();
+            SD_Website.SD_SignInPage.InputUserName("standard_user");
+            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.clickSignIn();
+
             Thread.Sleep(4000);
             SD_Website.SD_BasketPage.AddToBasket.Click();
 
+            Assert(true);*/
             
         }
 
