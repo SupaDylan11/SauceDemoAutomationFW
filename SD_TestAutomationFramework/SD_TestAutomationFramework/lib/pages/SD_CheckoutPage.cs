@@ -8,5 +8,6 @@ namespace SD_TestAutomationFramework.lib.pages
 {
     internal class SD_CheckoutPage
     {
+        
     }
 }
