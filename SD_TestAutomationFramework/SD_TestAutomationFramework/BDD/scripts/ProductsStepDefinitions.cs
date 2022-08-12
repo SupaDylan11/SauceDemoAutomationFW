@@ -20,16 +20,23 @@ namespace SD_TestAutomationFramework.BDD.scripts
             SD_Website.SD_SignInPage.clickSignIn();
         }
 
-        [When(@"I select the <item> I want to inspect")]
-        public void WhenISelectTheItemIWantToInspect(IWebElement item)
+        [When(@"I select the (.*) I want to inspect")]
+        public void WhenISelectTheIWantToInspect(int item)
         {
-            throw new PendingStepException();
+            SD_Website.SD_ProductsPage.SelectItem(item);
+            Thread.Sleep(3000);
         }
 
-        [Then(@"I am taken to that <itempage>")]
-        public void ThenIAmTakenToThatItempage()
+        [Then(@"I am taken to that ""(.*)""")]
+        public void ThenIAmTakenToThat(string itempage)
         {
-            throw new PendingStepException();
+            Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo(itempage));
+        }
+
+        [AfterScenario]
+        public void DiposeWebDriver()
+        {
+            SD_Website.SeleniumDriver.Quit();
         }
     }
 }
