@@ -16,7 +16,7 @@ namespace SD_TestAutomationFramework.lib.pages
         private IWebElement _usernameLoginField => _seleniumDriver.FindElement(By.Id("user-name"));
         private IWebElement _passwordLoginField => _seleniumDriver.FindElement(By.Id("password"));
         private IWebElement _submitBtn => _seleniumDriver.FindElement(By.Id("login-button"));
-        private IWebElement _signinAlert => _seleniumDriver.FindElement(By.Id(""));
+        private IWebElement _signinAlert => _seleniumDriver.FindElement(By.ClassName("error-message-container"));
         #endregion
 
         //constructor
