@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using SD_TestAutomationFramework.lib;
 using System;
 using System.Collections.Generic;
@@ -52,5 +53,44 @@ namespace SD_TestAutomationFramework.tests
             SD_Website.SeleniumDriver.Quit();
         }
 
+        [Test]
+        public void GivenIAmOnTheBasketsPage_WhenICLickTheAddToCartButton_TheItemShouldBeAdded()
+        {
+            SD_Website.SD_SignInPage.VisitSignInPage();
+            SD_Website.SD_SignInPage.InputUserName("standard_user");
+            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.clickSignIn();
+
+            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_BasketPage.CartItems;
+            int countB4 = cartItemsB4.Count;
+
+            SD_Website.SD_BasketPage.AddToBasket.Click();
+
+            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_BasketPage.CartItems;
+            int countAfter = cartItemsAfter.Count;
+
+            Assert.That(countB4 < countAfter, Is.True);
+        }
+
+        [Test]
+        public void GivenIAmOnTheBasketsPage_WhenICLickTheRemoveButton_TheItemShouldBeRemovedFromCart()
+        {
+            SD_Website.SD_SignInPage.VisitSignInPage();
+            SD_Website.SD_SignInPage.InputUserName("standard_user");
+            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.clickSignIn();
+
+            SD_Website.SD_BasketPage.AddToBasket.Click();
+
+            IReadOnlyList<IWebElement> cartItemsB4 = SD_Website.SD_BasketPage.CartItems;
+            int countB4 = cartItemsB4.Count;
+
+            SD_Website.SD_BasketPage.RemoveFromBasket.Click();
+
+            IReadOnlyList<IWebElement> cartItemsAfter = SD_Website.SD_BasketPage.CartItems;
+            int countAfter = cartItemsAfter.Count;
+
+            Assert.That(countB4 > countAfter, Is.True);
+        }
     }
 }
