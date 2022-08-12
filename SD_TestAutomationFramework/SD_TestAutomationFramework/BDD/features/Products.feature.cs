@@ -77,11 +77,20 @@ namespace SD_TestAutomationFramework.BDD.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Inspect Product")]
         [NUnit.Framework.CategoryAttribute("HappyPath")]
-        public void InspectProduct()
+        [NUnit.Framework.TestCaseAttribute("1", "https://www.saucedemo.com/inventory-item.html?id=4", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "https://www.saucedemo.com/inventory-item.html?id=0", null)]
+        public void InspectProduct(string input, string itempage, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "HappyPath"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("input", input);
+            argumentsOfScenario.Add("itempage", itempage);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Inspect Product", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -97,10 +106,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am signed in and on the products page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When("I select the \"<item>\" I want to inspect", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select the {0} I want to inspect", input), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("I am taken to that \"<itempage>\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I am taken to that \"{0}\"", itempage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
