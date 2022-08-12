@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <None Update="Testhost.dll.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
