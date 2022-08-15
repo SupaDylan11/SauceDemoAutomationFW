@@ -27,6 +27,48 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Thread.Sleep(3000);
         }
 
+        [When(@"I select the filter dropdown")]
+        public void WhenISelectTheFilterDropdown()
+        {
+            SD_Website.SD_ProductsPage.ClickFilterLink();
+            Thread.Sleep(3000);
+        }
+
+        [When(@"I select the ""([^""]*)""")]
+        public void WhenISelectThe(string filtertype)
+        {
+            SD_Website.SD_ProductsPage.ClickFilterType(filtertype);
+            Thread.Sleep(3000);
+        }
+
+        [When(@"I add an item to the cart")]
+        public void WhenIAddAnItemToTheCart()
+        {
+            SD_Website.SD_ProductsPage.AddToBasket("fleece-jacket");
+            Thread.Sleep(3000);
+        }
+
+        [When(@"I remove the item from the cart")]
+        public void WhenIRemoveTheItemFromTheCart()
+        {
+            SD_Website.SD_ProductsPage.RemoveFromBasket("fleece-jacket");
+        }
+
+
+        [Then(@"the number of items in cart is (.*)")]
+        public void ThenTheNumberOfItemsInCartIs(int numOfItems)
+        {
+            Assert.That(SD_Website.SD_ProductsPage.CartItems.Count, Is.EqualTo(numOfItems));
+        }
+
+
+        [Then(@"I am displayed the ""([^""]*)"" as per the filter order")]
+        public void ThenIAmDisplayedTheAsPerTheFilterOrder(string firstitem)
+        {
+            Assert.That(SD_Website.SD_ProductsPage.FirstItemName, Does.Contain(firstitem).IgnoreCase);
+        }
+
+
         [Then(@"I am taken to that ""(.*)""")]
         public void ThenIAmTakenToThat(string itempage)
         {

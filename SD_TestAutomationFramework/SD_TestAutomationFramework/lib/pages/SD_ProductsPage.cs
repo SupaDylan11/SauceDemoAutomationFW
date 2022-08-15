@@ -14,12 +14,9 @@ namespace SD_TestAutomationFramework.lib.pages
         private IWebElement _backpackLink => _seleniumDriver.FindElement(By.ClassName("inventory_item_name"));
         private IWebElement _filterLink => _seleniumDriver.FindElement(By.ClassName("product_sort_container"));
         private IWebElement _filterZA => _filterLink.FindElement(By.XPath("//option[text() = 'Name (Z to A)']"));
-        private IWebElement _firstItem => _seleniumDriver.FindElement(By.ClassName("inventory_list")).FindElement(By.XPath("/*[1]"));
+        private IWebElement _firstItem => _seleniumDriver.FindElement(By.ClassName("inventory_list")).FindElement(By.XPath($"//div[1]")).FindElement(By.ClassName("inventory_item_name"));
         private IWebElement _shoppingCart => _seleniumDriver.FindElement(By.ClassName("shopping_cart_badge"));
         private IReadOnlyList<IWebElement> _items => _seleniumDriver.FindElement(By.ClassName("shopping_cart_link")).FindElements(By.XPath(".//*"));
-
-
-        private IWebElement _addToCartButton => _seleniumDriver.FindElement(By.XPath("//div[@id='inventory_container']/div/div[5]/div[2]/div[2]/button"));
         private IWebElement _shoppingCartLink => _seleniumDriver.FindElement(By.Id("shopping_cart_container")).FindElement(By.TagName("a"));
         private IWebElement _itemList => _seleniumDriver.FindElement(By.ClassName("inventory_list"));
 
@@ -29,6 +26,7 @@ namespace SD_TestAutomationFramework.lib.pages
         public void SelectItem(int itemNo) => _itemList.FindElement(By.XPath($"//div[{itemNo}]/div/a/img")).Click();
         public void ClickFilterLink() => _filterLink.Click();
         public void ClickFilterZA() => _filterZA.Click();
+        public void ClickFilterType(string filterType) => _seleniumDriver.FindElement(By.XPath($"//option[text() = '{filterType}']")).Click();
         public string FirstItemName() => _firstItem.Text;
 
         public void AddToBasket(string item)
