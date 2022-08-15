@@ -21,14 +21,14 @@ namespace SD_TestAutomationFramework.lib.pages
 
         public void RemoveItemFromCart(string item)
         {
-            IWebElement itemToRemove = _seleniumDriver.FindElement(By.Id($"remove-{item}"));
+            IWebElement itemToRemove = _seleniumDriver.FindElement(By.Id($"remove-sauce-labs-{item}"));
             itemToRemove.Click();
         }
         public IWebElement ItemInBasket(string item)
         {
             try
             {
-                IWebElement element = _seleniumDriver.FindElement(By.Id($"remove-{item}"));
+                IWebElement element = _seleniumDriver.FindElement(By.Id($"remove-sauce-labs-{item}"));
                 return element;
             }
             catch (OpenQA.Selenium.NoSuchElementException ex)

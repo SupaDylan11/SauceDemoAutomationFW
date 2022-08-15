@@ -11,7 +11,7 @@ namespace SD_TestAutomationFramework.tests
 {
     public class SD_BasketPage_Tests
     {
-        //private SD_Website<ChromeDriver> SD_Website = new();
+        private SD_Website<ChromeDriver> SD_Website = new();
 
         //private string user = AppConfigReader.User;
         //private string passwd = AppConfigReader.Password;
@@ -49,16 +49,17 @@ namespace SD_TestAutomationFramework.tests
         //    Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/checkout-step-one.html"));
         //}
 
-        //[Test]
-        //public void GivenIAmOnTheBasketsPage_WhenIRemoveAnItem_ItShouldBeRemovedFromBasket()
-        //{
-        //    string product = "sauce-labs-onesie";
+        [Test]
+        public void GivenIAmOnTheBasketsPage_WhenIRemoveAnItem_ItShouldBeRemovedFromBasket()
+        {
+            string product = "sauce-labs-onesie";
 
-        //    SD_Website.SD_SignInPage.VisitSignInPage();
-        //    SD_Website.SD_SignInPage.InputUserName(user);
-        //    SD_Website.SD_SignInPage.InputPassword(passwd);
-        //    SD_Website.SD_SignInPage.clickSignIn();
-        //    Thread.Sleep(3000);
+            SD_Website.SD_SignInPage.VisitSignInPage();
+            SD_Website.SD_SignInPage.InputUserName(user);
+            SD_Website.SD_SignInPage.InputPassword(passwd);
+            SD_Website.SD_SignInPage.clickSignIn();
+            Thread.Sleep(3000);
+
 
         //    SD_Website.SD_ProductsPage.AddItemToCart(product);
         //    SD_Website.SD_ProductsPage.ClickBasketLink();
