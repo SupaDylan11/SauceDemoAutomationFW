@@ -42,20 +42,20 @@ namespace SD_TestAutomationFramework.BDD.scripts
             SD_Website.SD_CheckoutPage.InputPostCode(postCode);
         }
 
-        [Given(@"I click on the continue button")]
-        public void GivenIClickOnTheContinueButton()
+        [Given(@"I click on the continue button in  the checkout page")]
+        public void GivenIClickOnTheContinueButtonInTheCheckoutPage()
         {
             SD_Website.SD_CheckoutPage.ClickCheckout();
         }
 
-
-        [When(@"I click the finish button")]
-        public void WhenIClickTheFinishButton()
+        [When(@"I click the finish button in the overview page")]
+        public void WhenIClickTheFinishButtonInTheOverviewPage()
         {
             SD_Website.SD_OverviewPage.ClickFinish();
         }
-        [When(@"I click the cancel button")]
-        public void WhenIClickTheCancelButton()
+
+        [When(@"I click the cancel button in the overview page")]
+        public void WhenIClickTheCancelButtonInTheOverviewPage()
         {
             SD_Website.SD_OverviewPage.ClickCancel();
         }
