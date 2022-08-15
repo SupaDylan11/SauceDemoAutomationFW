@@ -7,18 +7,9 @@ using TechTalk.SpecFlow;
 namespace SD_TestAutomationFramework.BDD.scripts
 {
     [Binding]
-    public class ProductsStepDefinitions
+    [Scope(Feature = "Products")]
+    public class ProductsStepDefinitions : SharedSignIn_StepDefinition
     {
-        public SD_Website<ChromeDriver> SD_Website { get; set; } = new SD_Website<ChromeDriver>();
-
-        [Given(@"I am signed in and on the products page")]
-        public void GivenIAmSignedInAndOnTheProductsPage()
-        {
-            SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("standard_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
-            SD_Website.SD_SignInPage.clickSignIn();
-        }
 
         [When(@"I select the (.*) I want to inspect")]
         public void WhenISelectTheIWantToInspect(int item)
@@ -75,10 +66,5 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo(itempage));
         }
 
-        [AfterScenario]
-        public void DiposeWebDriver()
-        {
-            SD_Website.SeleniumDriver.Quit();
-        }
     }
 }
