@@ -14,3 +14,10 @@ Examples:
 | Item   |
 | fleece-jacket |
 | backpack |
+
+@HappyPath
+Scenario: Go To Checkout
+	Given I am signed in and on the products page
+	When I go to the Basket page
+	And I press the checkout button
+	Then I am taken to the checkout page
