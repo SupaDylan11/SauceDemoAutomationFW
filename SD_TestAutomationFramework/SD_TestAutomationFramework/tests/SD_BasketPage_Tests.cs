@@ -60,10 +60,11 @@ namespace SD_TestAutomationFramework.tests
             SD_Website.SD_SignInPage.clickSignIn();
             Thread.Sleep(3000);
 
-            SD_Website.SD_ProductsPage.AddItemToCart(product);
-            SD_Website.SD_ProductsPage.ClickBasketLink();
-            Thread.Sleep(3000);
-            
+
+        //    SD_Website.SD_ProductsPage.AddItemToCart(product);
+        //    SD_Website.SD_ProductsPage.ClickBasketLink();
+        //    Thread.Sleep(3000);
+
         //    IWebElement itemInBasket = SD_Website.SD_BasketPage.ItemInBasket(product);
         //    Assert.That(itemInBasket, Is.Not.Null);
 
