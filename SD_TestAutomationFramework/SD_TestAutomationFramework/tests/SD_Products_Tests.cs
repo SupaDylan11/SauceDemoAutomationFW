@@ -16,8 +16,8 @@ namespace SD_TestAutomationFramework.tests
         {
             //Sign In
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("standard_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.InputUserName(user);
+            SD_Website.SD_SignInPage.InputPassword(passwd);
             SD_Website.SD_SignInPage.clickSignIn();
 
             //Click Backpack Link

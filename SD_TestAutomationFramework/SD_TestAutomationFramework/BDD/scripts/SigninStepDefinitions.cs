@@ -68,7 +68,6 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Assert.That(SD_Website.SD_SignInPage.GetAlertSignIn, Does.Contain("Epic sadface"));
         }
 
-
         [AfterScenario]
         public void DiposeWebDriver()
         {

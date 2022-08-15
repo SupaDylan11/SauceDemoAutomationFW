@@ -7,18 +7,9 @@ using TechTalk.SpecFlow;
 namespace SD_TestAutomationFramework.BDD.scripts
 {
     [Binding]
-    public class ProductsStepDefinitions
+    [Scope(Feature = "Products")]
+    public class ProductsStepDefinitions : SharedSignIn_StepDefinition
     {
-        public SD_Website<ChromeDriver> SD_Website { get; set; } = new SD_Website<ChromeDriver>();
-
-        [Given(@"I am signed in and on the products page")]
-        public void GivenIAmSignedInAndOnTheProductsPage()
-        {
-            SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("standard_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
-            SD_Website.SD_SignInPage.clickSignIn();
-        }
 
         [When(@"I select the (.*) I want to inspect")]
         public void WhenISelectTheIWantToInspect(int item)
@@ -54,6 +45,18 @@ namespace SD_TestAutomationFramework.BDD.scripts
             SD_Website.SD_ProductsPage.RemoveFromBasket("fleece-jacket");
         }
 
+        [When(@"I press the basket button")]
+        public void WhenIPressTheBasketButton()
+        {
+            SD_Website.SD_ProductsPage.ClickBasketLink();
+        }
+
+        [Then(@"I am taken to the basket page")]
+        public void ThenIAmTakenToTheBasketPage()
+        {
+            Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/cart.html"));
+        }
+
 
         [Then(@"the number of items in cart is (.*)")]
         public void ThenTheNumberOfItemsInCartIs(int numOfItems)
@@ -75,10 +78,5 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo(itempage));
         }
 
-        [AfterScenario]
-        public void DiposeWebDriver()
-        {
-            SD_Website.SeleniumDriver.Quit();
-        }
     }
 }
