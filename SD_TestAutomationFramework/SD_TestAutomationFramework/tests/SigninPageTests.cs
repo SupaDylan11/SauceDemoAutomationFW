@@ -14,14 +14,20 @@ namespace SD_TestAutomationFramework.tests
     {
         private SD_Website<ChromeDriver> SD_Website = new();
 
-        [TestCase("standard_user")]
-        [TestCase("problem_user")]
-        [TestCase("performance_glitch_user")]
-        public void GivenIAmOnTheSignInPage_WhenIEnterCorrectCredentials_WhenIClickSignIn_EnterTheStore(string username)
+        private string user = AppConfigReader.User;
+        private string lockedOut = AppConfigReader.LockedOut;
+        private string problem = AppConfigReader.Problem;
+        private string performanceGlitch = AppConfigReader.PerformanceGlitch;
+        private string password = AppConfigReader.Password;
+        private string invalidUser = AppConfigReader.InvalidUser;
+        private string invalidPassword = AppConfigReader.InvalidPswd;
+
+        [Test]
+        public void GivenIAmOnTheSignInPage_WhenIEnterCorrectCredentials_WhenIClickSignIn_EnterTheStore()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName(username);
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.InputUserName(user);
+            SD_Website.SD_SignInPage.InputPassword(password);
             SD_Website.SD_SignInPage.clickSignIn();
             Assert.That(SD_Website.SeleniumDriver.Url, Does.Contain("https://www.saucedemo.com/inventory.html"));
         }
@@ -30,8 +36,8 @@ namespace SD_TestAutomationFramework.tests
         public void GivenIAmOnTheSignInPage_AndIEnterInvalidDetails_WhenIClickSignIn_ShowAnError()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("dylan");
-            SD_Website.SD_SignInPage.InputPassword("enron");
+            SD_Website.SD_SignInPage.InputUserName(invalidUser);
+            SD_Website.SD_SignInPage.InputPassword(invalidPassword);
             SD_Website.SD_SignInPage.clickSignIn();
             Assert.That(SD_Website.SD_SignInPage.GetAlertSignIn, Does.Contain("Epic sadface"));
         }
@@ -40,8 +46,8 @@ namespace SD_TestAutomationFramework.tests
         public void GivenIAmOnTheSignInPage_AndIEnterAnLockedOutAccount_WhenIClickSignIn_ShowAnError()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("locked_out_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.InputUserName(lockedOut);
+            SD_Website.SD_SignInPage.InputPassword(password);
             SD_Website.SD_SignInPage.clickSignIn();
             Assert.That(SD_Website.SD_SignInPage.GetAlertSignIn, Does.Contain("locked out"));
         }
