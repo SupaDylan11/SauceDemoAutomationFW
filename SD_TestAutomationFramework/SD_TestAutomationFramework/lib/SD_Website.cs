@@ -10,7 +10,7 @@ namespace SD_TestAutomationFramework.lib
         public IWebDriver SeleniumDriver { get; set; }
 
         public SD_SigninPage SD_SignInPage { get; set; }
-
+        public SD_BasketPage SD_BasketPage { get; set; }
         public SD_ProductsPage SD_ProductsPage { get; set; }
         public SD_CheckoutPage SD_CheckoutPage { get; set; }
         public SD_OverviewPage SD_OverviewPage { get; set; }
