@@ -45,6 +45,18 @@ namespace SD_TestAutomationFramework.BDD.scripts
             SD_Website.SD_ProductsPage.RemoveFromBasket("fleece-jacket");
         }
 
+        [When(@"I press the basket button")]
+        public void WhenIPressTheBasketButton()
+        {
+            SD_Website.SD_ProductsPage.ClickBasketLink();
+        }
+
+        [Then(@"I am taken to the basket page")]
+        public void ThenIAmTakenToTheBasketPage()
+        {
+            Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/cart.html"));
+        }
+
 
         [Then(@"the number of items in cart is (.*)")]
         public void ThenTheNumberOfItemsInCartIs(int numOfItems)

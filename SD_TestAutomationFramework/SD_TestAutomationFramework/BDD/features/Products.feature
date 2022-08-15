@@ -35,3 +35,9 @@ Scenario: Remove Item From Cart
 	When I add an item to the cart
 	And I remove the item from the cart
 	Then the number of items in cart is 0
+
+@HappyPath
+Scenario: Go To Basket
+	Given I am signed in and on the products page
+	When I press the basket button
+	Then I am taken to the basket page

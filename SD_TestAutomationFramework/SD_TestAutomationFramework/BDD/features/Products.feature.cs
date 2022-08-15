@@ -225,6 +225,38 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Go To Basket")]
+        [NUnit.Framework.CategoryAttribute("HappyPath")]
+        public void GoToBasket()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "HappyPath"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Go To Basket", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 40
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 41
+ testRunner.Given("I am signed in and on the products page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 42
+ testRunner.When("I press the basket button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 43
+ testRunner.Then("I am taken to the basket page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
