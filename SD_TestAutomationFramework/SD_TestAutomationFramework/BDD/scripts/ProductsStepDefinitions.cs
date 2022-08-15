@@ -32,17 +32,17 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Thread.Sleep(3000);
         }
 
-        [When(@"I add an item to the cart")]
-        public void WhenIAddAnItemToTheCart()
+        [When(@"I add an ""([^""]*)"" to the cart")]
+        public void WhenIAddAnToTheCart(string item)
         {
-            SD_Website.SD_ProductsPage.AddToBasket("fleece-jacket");
+            SD_Website.SD_ProductsPage.AddToBasket(item);
             Thread.Sleep(3000);
         }
 
-        [When(@"I remove the item from the cart")]
-        public void WhenIRemoveTheItemFromTheCart()
+        [When(@"I remove the ""([^""]*)"" from the cart")]
+        public void WhenIRemoveTheFromTheCart(string item)
         {
-            SD_Website.SD_ProductsPage.RemoveFromBasket("fleece-jacket");
+            SD_Website.SD_ProductsPage.RemoveFromBasket(item);
         }
 
         [When(@"I press the basket button")]

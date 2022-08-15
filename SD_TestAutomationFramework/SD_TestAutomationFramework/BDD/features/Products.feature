@@ -26,15 +26,23 @@ Examples:
 @HappyPath
 Scenario: Add Item To Cart
 	Given I am signed in and on the products page
-	When I add an item to the cart
+	When I add an "<item>" to the cart
 	Then the number of items in cart is 1
+	Examples: 
+	| item          |
+	| fleece-jacket |
+	| bike-light    |
 
 @HappyPath
 Scenario: Remove Item From Cart
 	Given I am signed in and on the products page
-	When I add an item to the cart
-	And I remove the item from the cart
+	When I add an "<item>" to the cart
+	And I remove the "<item>" from the cart
 	Then the number of items in cart is 0
+	Examples: 
+	| item          |
+	| fleece-jacket |
+	| bike-light    |
 
 @HappyPath
 Scenario: Go To Basket
