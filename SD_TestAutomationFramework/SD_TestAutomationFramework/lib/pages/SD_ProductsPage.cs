@@ -18,9 +18,9 @@ namespace SD_TestAutomationFramework.lib.pages
         private IWebElement _shoppingCart => _seleniumDriver.FindElement(By.ClassName("shopping_cart_badge"));
         private IReadOnlyList<IWebElement> _items => _seleniumDriver.FindElement(By.ClassName("shopping_cart_link")).FindElements(By.XPath(".//*"));
 
-        private string _productsPageUrl = AppConfigReader.BaseUrl;
+
         private IWebElement _addToCartButton => _seleniumDriver.FindElement(By.XPath("//div[@id='inventory_container']/div/div[5]/div[2]/div[2]/button"));
-        private IWebElement _removeFromCartButton => _seleniumDriver.FindElement(By.XPath("//*[starts-with(@id, 'remove-sauce-labs-')]"));
+        private IWebElement _shoppingCartLink => _seleniumDriver.FindElement(By.Id("shopping_cart_container")).FindElement(By.TagName("a"));
         private IWebElement _itemList => _seleniumDriver.FindElement(By.ClassName("inventory_list"));
 
         public SD_ProductsPage(IWebDriver seleniumDriver) => _seleniumDriver = seleniumDriver;
@@ -31,9 +31,24 @@ namespace SD_TestAutomationFramework.lib.pages
         public void ClickFilterZA() => _filterZA.Click();
         public string FirstItemName() => _firstItem.Text;
 
-        public IWebElement AddToBasket => _addToCartButton;
-        public IWebElement RemoveFromBasket => _removeFromCartButton;
+        public void AddToBasket(string item)
+        {
+            IWebElement itemToAdd = _seleniumDriver.FindElement(By.Id($"add-to-cart-sauce-labs-{item}"));
+            itemToAdd.Click();
+        }
+
+        public void RemoveFromBasket(string item)
+        {
+            IWebElement itemToRemove = _seleniumDriver.FindElement(By.Id($"remove-sauce-labs-{item}"));
+            itemToRemove.Click();
+        }
         public IWebElement GetShoppingCart => _shoppingCart;
         public IReadOnlyList<IWebElement> CartItems => _items;
+        public void ClickBasketLink() => _shoppingCartLink.Click();
+        public void AddItemToCart(string item)
+        {
+            IWebElement itemToAdd = _seleniumDriver.FindElement(By.Id($"add-to-cart-{item}"));
+            itemToAdd.Click();
+        }
     }
 }
