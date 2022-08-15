@@ -66,8 +66,6 @@ namespace SD_TestAutomationFramework.tests
 
             SD_Website.SD_CheckoutPage.ClickFirstName();
             SD_Website.SD_CheckoutPage.InputFirstName("Bob");
-            
-            
 
             ////Click Checkout button
             SD_Website.SD_CheckoutPage.ClickCheckout();
