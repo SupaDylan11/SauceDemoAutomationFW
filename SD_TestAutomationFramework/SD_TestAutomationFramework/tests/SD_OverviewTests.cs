@@ -82,7 +82,7 @@ namespace SD_TestAutomationFramework.tests
         //    //Check first item includes (red)
         //    Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/inventory.html"));
         //}
-        
+
         //[OneTimeTearDown]
         //public void CleanUp()
         //{
