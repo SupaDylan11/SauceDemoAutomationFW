@@ -45,7 +45,8 @@ namespace SD_TestAutomationFramework.lib.pages
         public void ClickBasketLink() => _shoppingCartLink.Click();
         public void AddItemToCart(string item)
         {
-            IWebElement itemToAdd = _seleniumDriver.FindElement(By.Id($"add-to-cart-{item}"));
+            string itemID = $"add-to-cart-sauce-labs-{item}";
+            IWebElement itemToAdd = _seleniumDriver.FindElement(By.Id(itemID));
             itemToAdd.Click();
         }
     }
