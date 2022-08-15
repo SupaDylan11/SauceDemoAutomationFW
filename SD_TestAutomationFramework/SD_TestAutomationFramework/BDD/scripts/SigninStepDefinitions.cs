@@ -4,6 +4,7 @@ using SD_TestAutomationFramework.lib;
 using System;
 using TechTalk.SpecFlow;
 
+
 namespace SD_TestAutomationFramework.BDD.scripts
 {
     [Binding]
@@ -11,12 +12,20 @@ namespace SD_TestAutomationFramework.BDD.scripts
     {
         public SD_Website<ChromeDriver> SD_Website { get; set; } = new SD_Website<ChromeDriver>();
 
+        private string user = AppConfigReader.User;
+        private string lockedOut = AppConfigReader.LockedOut;
+        private string problem = AppConfigReader.Problem;
+        private string performanceGlitch = AppConfigReader.PerformanceGlitch;
+        private string password = AppConfigReader.Password;
+        private string invalidUser = AppConfigReader.InvalidUser;
+        private string invalidPassword = AppConfigReader.InvalidPswd;
+
         [Given(@"I have entered user credentials")]
         public void GivenIHaveEnteredUserCredentials()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("standard_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.InputUserName(user);
+            SD_Website.SD_SignInPage.InputPassword(password);
         }
 
         [When(@"I click the sign in button")]
@@ -35,8 +44,8 @@ namespace SD_TestAutomationFramework.BDD.scripts
         public void GivenIHaveEnteredLockedOutUserCredentials()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("locked_out_user");
-            SD_Website.SD_SignInPage.InputPassword("secret_sauce");
+            SD_Website.SD_SignInPage.InputUserName(lockedOut);
+            SD_Website.SD_SignInPage.InputPassword(password);
         }
 
         [Then(@"I will have a locked out error")]
@@ -49,8 +58,8 @@ namespace SD_TestAutomationFramework.BDD.scripts
         public void GivenIHaveEnteredInvalidCredentials()
         {
             SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName("dylan");
-            SD_Website.SD_SignInPage.InputPassword("enron");
+            SD_Website.SD_SignInPage.InputUserName(invalidUser);
+            SD_Website.SD_SignInPage.InputPassword(invalidPassword);
         }
 
         [Then(@"I will have an error")]
