@@ -29,6 +29,18 @@ namespace SD_TestAutomationFramework
             SD_Website.SD_BasketPage.RemoveItemFromCart(product);
         }
 
+        [When(@"I press the checkout button")]
+        public void WhenIPressTheCheckoutButton()
+        {
+            SD_Website.SD_BasketPage.GoToCheckout();
+        }
+
+        [Then(@"I am taken to the checkout page")]
+        public void ThenIAmTakenToTheCheckoutPage()
+        {
+            Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/checkout-step-one.html"));
+        }
+
         [Then(@"the (.*) should be removed")]
         public void ThenTheShouldBeRemoved(string product)
         {
