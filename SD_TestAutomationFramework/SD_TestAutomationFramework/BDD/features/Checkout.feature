@@ -7,7 +7,9 @@ So that I can buy stuff
 
 @HappyPath
 Scenario: Adding valid shipping details
-	Given I am signed in and on the checkout page
+	Given I am signed in and on the products page
+	And I click on the basket button
+	And I click on the checkout button
 	When I input my <firstName> in the firstname field
 	And I input my <lastName> in the lastname field 
 	And I input my <postalCode> in the zip code field 
@@ -21,7 +23,9 @@ Examples:
 
 @HappyPath
 Scenario: Gives error message with invalid lastName and invalid postCode shipping details
-	Given I am signed in and on the checkout page
+	Given I am signed in and on the products page
+	And I click on the basket button
+	And I click on the checkout button
 	When I input my <firstName> in the firstname field
 	And I input my <lastName> in the lastname field 
 	And I input my <postalCode> in the zip code field 

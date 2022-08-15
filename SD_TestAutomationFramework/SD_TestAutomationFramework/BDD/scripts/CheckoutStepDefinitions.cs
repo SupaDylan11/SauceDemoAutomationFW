@@ -7,22 +7,21 @@ using TechTalk.SpecFlow;
 namespace SD_TestAutomationFramework.BDD.scripts
 {
     [Binding]
-    public class CheckoutStepDefinitions
+    [Scope(Feature = "Checkout")]
+    public class CheckoutStepDefinitions : SharedSignIn_StepDefinition
     {
-        public SD_Website<ChromeDriver> SD_Website { get; set; } = new SD_Website<ChromeDriver>();
-        private string user = AppConfigReader.User;
-        private string passwd = AppConfigReader.Password;
-
-        [Given(@"I am signed in and on the checkout page")]
-        public void GivenIAmSignedInAndOnTheCheckoutPage()
+        [Given(@"I click on the basket button")]
+        public void GivenIClickOnTheBasketButton()
         {
-            SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName(user);
-            SD_Website.SD_SignInPage.InputPassword(passwd);
-            SD_Website.SD_SignInPage.clickSignIn();
             SD_Website.SD_ProductsPage.ClickBasketLink();
+        }
+
+        [Given(@"I click on the checkout button")]
+        public void GivenIClickOnTheCheckoutButton()
+        {
             SD_Website.SD_BasketPage.GoToCheckout();
         }
+
         [When(@"I input my (.*) in the firstname field")]
         public void WhenIInputMyBobInTheFirstnameField(string firstName)
         {
@@ -62,12 +61,5 @@ namespace SD_TestAutomationFramework.BDD.scripts
             Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo(checkoutPage));
         }
 
-
-
-        [AfterScenario]
-        public void DiposeWebDriver()
-        {
-            SD_Website.SeleniumDriver.Quit();
-        }
     }
 }

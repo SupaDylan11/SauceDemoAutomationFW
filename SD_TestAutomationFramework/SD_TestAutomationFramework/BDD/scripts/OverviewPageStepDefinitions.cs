@@ -8,30 +8,46 @@ using TechTalk.SpecFlow;
 namespace SD_TestAutomationFramework.BDD.scripts
 {
     [Binding]
-    public class OverviewPageStepDefinitions
+    [Scope (Feature = "Overview")]
+    public class OverviewPageStepDefinitions : SharedSignIn_StepDefinition
     {
-        public SD_Website<ChromeDriver> SD_Website { get; set; } = new SD_Website<ChromeDriver>();
-        private string user = AppConfigReader.User;
-        private string passwd = AppConfigReader.Password;
-        [Given(@"I am signed in and on the overview page")]
-        public void GivenIAmSignedInAndOnTheOverviewPage()
+
+        [Given(@"I click on the basket button")]
+        public void GivenIClickOnTheBasketButton()
         {
-            SD_Website.SD_SignInPage.VisitSignInPage();
-            SD_Website.SD_SignInPage.InputUserName(user);
-            SD_Website.SD_SignInPage.InputPassword(passwd);
-            SD_Website.SD_SignInPage.clickSignIn();
             SD_Website.SD_ProductsPage.ClickBasketLink();
+        }
+
+        [Given(@"I click on the checkout button")]
+        public void GivenIClickOnTheCheckoutButton()
+        {
             SD_Website.SD_BasketPage.GoToCheckout();
+        }
 
-            SD_Website.SD_CheckoutPage.ClickFirstName();
-            SD_Website.SD_CheckoutPage.InputFirstName("Bob");
-            SD_Website.SD_CheckoutPage.ClickLastName();
-            SD_Website.SD_CheckoutPage.InputLastName("Marley");
-            SD_Website.SD_CheckoutPage.ClickPostCode();
-            SD_Website.SD_CheckoutPage.InputPostCode("JAM1 1CA");
+        [Given(@"I enter ""([^""]*)"" in the first-name box")]
+        public void GivenIEnterInTheFirst_NameBox(string bob)
+        {
+            SD_Website.SD_CheckoutPage.InputFirstName(bob);
+        }
 
+        [Given(@"I enter ""([^""]*)"" in the last-name box")]
+        public void GivenIEnterInTheLast_NameBox(string marley)
+        {
+            SD_Website.SD_CheckoutPage.InputLastName(marley);
+        }
+
+        [Given(@"I enter ""([^""]*)"" in the postal-code box")]
+        public void GivenIEnterInThePostal_CodeBox(string postCode)
+        {
+            SD_Website.SD_CheckoutPage.InputPostCode(postCode);
+        }
+
+        [Given(@"I click on the continue button")]
+        public void GivenIClickOnTheContinueButton()
+        {
             SD_Website.SD_CheckoutPage.ClickCheckout();
         }
+
 
         [When(@"I click the finish button")]
         public void WhenIClickTheFinishButton()
