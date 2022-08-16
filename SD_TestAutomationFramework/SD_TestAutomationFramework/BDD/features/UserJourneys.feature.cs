@@ -76,8 +76,9 @@ namespace SD_TestAutomationFramework.BDD.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User gives £££ to (Sauce) Demo website")]
         [NUnit.Framework.CategoryAttribute("SuccessfulShop")]
-        [NUnit.Framework.TestCaseAttribute("onesie", null)]
-        public void UserGivesToSauceDemoWebsite(string product, string[] exampleTags)
+
+        [NUnit.Framework.TestCaseAttribute("bike-light", "bolt-t-shirt", "Prince", "Rogers Nelson", "34018", null)]
+        public void UserGivesToSauceDemoWebsite(string product1, string product2, string firstName, string lastName, string postCode, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "SuccessfulShop"};
@@ -87,7 +88,12 @@ namespace SD_TestAutomationFramework.BDD.Features
             }
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Product", product);
+            argumentsOfScenario.Add("Product1", product1);
+            argumentsOfScenario.Add("Product2", product2);
+            argumentsOfScenario.Add("FirstName", firstName);
+            argumentsOfScenario.Add("LastName", lastName);
+            argumentsOfScenario.Add("PostCode", postCode);
+
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User gives £££ to (Sauce) Demo website", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -103,12 +109,19 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("I am logged in and on the products page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
- testRunner.When(string.Format("I add a {0} to the cart and go to my basket", product), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I add {0} and {1} to the cart and go to my basket", product1, product2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.And("input my details for the checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("remove the second product {0} and click the Checkout button", product2), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
+ testRunner.And(string.Format("I input my details {0} {1} and {2} for the checkout", firstName, lastName, postCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 11
+ testRunner.And("I click Finish button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
+
  testRunner.Then("I am taken to the complete page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
