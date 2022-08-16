@@ -76,6 +76,7 @@ namespace SD_TestAutomationFramework.BDD.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User gives £££ to (Sauce) Demo website")]
         [NUnit.Framework.CategoryAttribute("SuccessfulShop")]
+
         [NUnit.Framework.TestCaseAttribute("bike-light", "bolt-t-shirt", "Prince", "Rogers Nelson", "34018", null)]
         public void UserGivesToSauceDemoWebsite(string product1, string product2, string firstName, string lastName, string postCode, string[] exampleTags)
         {
@@ -92,6 +93,7 @@ namespace SD_TestAutomationFramework.BDD.Features
             argumentsOfScenario.Add("FirstName", firstName);
             argumentsOfScenario.Add("LastName", lastName);
             argumentsOfScenario.Add("PostCode", postCode);
+
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User gives £££ to (Sauce) Demo website", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -119,6 +121,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click Finish button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
+
  testRunner.Then("I am taken to the complete page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
