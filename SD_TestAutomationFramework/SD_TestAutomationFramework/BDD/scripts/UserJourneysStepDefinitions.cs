@@ -1,3 +1,4 @@
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using SD_TestAutomationFramework.lib;
 using System;
@@ -9,7 +10,7 @@ namespace SD_TestAutomationFramework.BDD.scripts
     [Scope(Feature = "UserJourneys")]
     public class UserJourneysStepDefinitions
     {
-        public SD_Website<FirefoxDriver> SD_Website = new();
+        public SD_Website<ChromeDriver> SD_Website = new();
 
         [Given(@"I am logged in and on the products page")]
         public void GivenIAmLoggedInAndOnTheProductsPage()
@@ -68,6 +69,12 @@ namespace SD_TestAutomationFramework.BDD.scripts
         public void ThenIAmTakenToTheCompletePage()
         {
             Assert.That(SD_Website.SeleniumDriver.Url, Is.EqualTo("https://www.saucedemo.com/checkout-complete.html"));
+        }
+
+        [AfterScenario]
+        public void DiposeWebDriver()
+        {
+            SD_Website.SeleniumDriver.Quit();
         }
 
     }
